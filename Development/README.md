@@ -59,13 +59,14 @@ development/
 
 ```bash
 git clone https://github.com/mohammadimathstar/m5-forecasting.git
-cd m5-forecasting
+cd m5-forecasting/Development
 ```
 
 ### 2. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+uv venv
+uv pip install -r requirements.txt
 ```
 
 ### 3. Configure environment
@@ -73,14 +74,6 @@ pip install -r requirements.txt
 ```bash
 cp .env.example .env
 # Then edit `.env` with your credentials (for using S3)
-```
-
-## 🧪 Run the pipeline
-
-This command will execute the full data pipeline from preprocessing to model training and MLflow logging:
-
-```bash
-python pipeline.py
 ```
 
 
@@ -100,6 +93,7 @@ Follow these steps to run the M5 forecasting pipeline locally:
 
 ```bash
 make install
+source .venv/bin/activate
 ```
 
 #### 2. Start Mlflow server
@@ -114,7 +108,7 @@ mlflow server \
   --port 5000
 ```
 
-Note. Here I use S3 (AWS) to save the model (I assume the bucket `mlflow-artifacts-bucket-m5` has already existed).
+Note. Here I use S3 (AWS) to save the model (I assume the bucket `mlflow-artifacts-bucket-m5` has already existed) (see params.yaml).
 
 
 #### 3. Prepare the environment variables (if any)
