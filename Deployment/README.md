@@ -29,6 +29,7 @@ This folder simulates a **production pipeline** where daily data is ingested, pr
 ---
 ## 📂 Structure
 
+```
 Deployment/
 ├── codes/
 │ ├── db.py
@@ -50,7 +51,7 @@ Deployment/
 ├── .gitignore
 └── README.md ← this file
 
-
+```
 
 ---
 
