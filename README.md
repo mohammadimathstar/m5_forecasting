@@ -27,8 +27,6 @@ Sample data:
 
 ## 2. Proposed Solution
 
-The solution follows a modular and production-grade ML pipeline based on MLOps best practices.
-
 We propose a modular and production-ready **MLOps pipeline** to forecast sales. The solution is divided into two distinct components:
 
 ### 📁 `development/`: Model Development
@@ -112,25 +110,16 @@ This pipeline can be deployed for regular batch inference or integrated into a l
 
 | Category       | Tools Used |
 |----------------|------------|
-| Language       | Python 3.10 |
+| Language       | Python     |
 | Workflow       | [Prefect](https://www.prefect.io) |
 | Model Tracking | [MLflow](https://mlflow.org) |
 | Model          | [LightGBM](https://lightgbm.readthedocs.io/en/latest/) |
 | Tuning         | [Hyperopt](https://github.com/hyperopt/hyperopt) |
+| Monitoring     | EvidentlyAI|
+| Dashboard      | Grafana    |
 | Testing        | `pytest` |
-| Formatting     | `black`, `isort`, `ruff` |
+| Formatting     | `ruff` |
 | Orchestration  | Shell + `make` |
 | Storage        | Local / AWS S3 (for MLflow artifacts) |
 
 ---
-
-## 4. How to Run
-
-### 📦 Setup
-
-```bash
-make install      # Install dependencies
-make format       # Auto-format code
-make lint         # Lint check
-make test         # Run unit tests
-```
