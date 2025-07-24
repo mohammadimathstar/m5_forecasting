@@ -165,11 +165,17 @@ http://localhost:8080
 
 Login :
 
+- system: PostgreSQL
+
+- Server: db
+
 - Username: postgres
 
 - Password: example
 
 - Database: test
+
+![Adminer](pics/adminer-db.png)
 
 ### 📈 Grafana
 
@@ -184,6 +190,14 @@ Login (default):
 - Username: admin
 
 - Password: admin
+
+![Dashboard](pics/dashboard.png)
+
+### Prefect
+
+To observe the progress
+
+![Prefect](pics/prefect-deployment.png)
 
 
 ## Clean up
