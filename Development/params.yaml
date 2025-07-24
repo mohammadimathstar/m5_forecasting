@@ -1,0 +1,17 @@
+
+
+mlflow:
+  experiment_name: 'm5'
+  tracking_uri: "http://localhost:5000"
+  model_dir: 'models'
+  creds_on: True
+
+
+split:
+  starting_date_idx_training: 1500 # 1..1913 days
+  end_date_idx_training: 1700
+  end_date_idx_validation: 1800
+
+hyperparams: 
+  number_of_trials: 20
+  
