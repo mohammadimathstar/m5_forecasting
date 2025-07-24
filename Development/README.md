@@ -89,11 +89,9 @@ cp .env.example .env
 
 Follow these steps to run the M5 forecasting pipeline locally:
 
-#### 1. Install dependencies
+#### 1. Activate the virtual environment
 
 ```bash
-uv venv
-uv pip install -r requirements.txt
 source .venv/bin/activate
 ```
 
@@ -105,6 +103,7 @@ You can run the pipeline using `run_pipeline.sh`
 chmod +x run_pipeline.sh
 ./run_pipeline.sh
 ```
+
 
 You need to start the Mlflow server:
 
