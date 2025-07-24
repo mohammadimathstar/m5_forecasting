@@ -103,77 +103,34 @@ You can run the pipeline using `run_pipeline.sh`
 chmod +x run_pipeline.sh
 ./run_pipeline.sh
 ```
+It opens a menu. You can select `Store code on a local filesystem`.
 
 
+### MLflow
+
+To track the experiment, we use Mlflow. You can modify its configuration:
+
+- backend-store-uri: the location for storing the meta-data, such as metrics, hyperparameters and etc. Here, we use sqlite.
+
+- default-artifact-root: the location for storing the final model with its artifacts. Here, we use AWS S3.
 You need to start the Mlflow server:
 
+- host and port: to see the experiment runs (default is `localhost:5000`)
+
+Note. You must create the S3 bucket before running the script.
+
+![Mlflow](pics/mlflow-training.png)
+
+### Prefect
+
+To see the progress of the workflow, you can open:
 ```bash
-mlflow server \
-  --backend-store-uri sqlite:///mlflow.db \
-  --default-artifact-root s3://mlflow-artifacts-bucket-m5/ \
-  --host 0.0.0.0 \
-  --port 5000
+localhost:4200
 ```
-
-Note. Here I use S3 (AWS) to save the model (I assume the bucket `mlflow-artifacts-bucket-m5` has already existed) (see params.yaml).
-
-
-#### 3. Prepare the environment variables (if any)
-
-If your project requires environment variables, create a .env file or export them manually:
-
-```bash
-export PREFECT_API_URL=http://127.0.0.1:4200/api
-# or use your .env file setup instructions here
-```
-
-#### 4. Start Prefect server and worker (in separate terminals or using scripts)
-
-You need to start the Prefect server and a worker to run the flow.
-
-In Terminal 1:
-
-```bash
-prefect server start
-```
-
-In Terminal 2:
-
-```bash
-prefect worker start -p my-pool -t process
-```
+and click on `Runs` tab.
 
 
-Note. For this you need to first in your terminal window write:
-
-```bash
-chmod +x start_prefect.sh
-```
-
-#### 5. Deploy the pipeline
-
-Register the pipeline flow to Prefect:
-
-```bash
-prefect deployment create pipeline_training.py:m5_pipeline -n my-deployment -p my-pool
-```
-
-#### 6. Run the pipeline
-
-Trigger the pipeline run:
-
-```bash
-prefect deployment run 'm5_pipeline/my-deployment'
-```
-
-#### Optional: Running the entire workflow with a script
-
-You can automate steps 2–6 with a shell script:
-
-```bash
-chmod +x start_prefect.sh
-./run_pipeline.sh
-```
+![Prefect](pics/prefect-training.png)
 
 
 
@@ -194,6 +151,9 @@ chmod +x start_prefect.sh
 
 - `make format`  
   Formats code using `ruff`.
+
+- `make run`
+  To run the pipeline.
 
 - `make clean`  
   Removes Python bytecode files (`__pycache__`, `.pyc`, `.pyo`) to keep the repo clean.
