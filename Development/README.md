@@ -105,21 +105,23 @@ chmod +x run_pipeline.sh
 ```
 It opens a menu. You can select `Store code on a local filesystem`.
 
+----
 
 ### MLflow
 
-To track the experiment, we use Mlflow. You can modify its configuration:
+To track the experiment, we use Mlflow. You can modify its configuration in `run_pipeline.sh` script:
 
 - backend-store-uri: the location for storing the meta-data, such as metrics, hyperparameters and etc. Here, we use sqlite.
 
 - default-artifact-root: the location for storing the final model with its artifacts. Here, we use AWS S3.
-You need to start the Mlflow server:
 
 - host and port: to see the experiment runs (default is `localhost:5000`)
 
 Note. You must create the S3 bucket before running the script.
 
 ![Mlflow](pics/mlflow-training.png)
+
+----
 
 ### Prefect
 
