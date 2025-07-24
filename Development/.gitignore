@@ -1,0 +1,30 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# credencials (AWS)
+.env
+*.log
+
+# Jupyter
+.ipynb_checkpoints
+
+# Data
+/data/processed/
+/data/raw/
+
+# MLflow
+mlruns/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
