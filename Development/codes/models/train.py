@@ -12,7 +12,7 @@ def train_lightgbm_model(
     X_valid: pd.DataFrame,
     y_valid: pd.Series,
     params: Dict,
-    num_boost_round: int = 500
+    num_boost_round: int = 500,
 ) -> Tuple[lgb.Booster, Dict[str, float]]:
     """
     Train a LightGBM model and return evaluation metrics and the model.
@@ -22,10 +22,13 @@ def train_lightgbm_model(
         metrics: Dict with RMSE, sMAPE, MASE
     """
     model_params = {
-        'objective': 'regression',
-        'metric': 'None',
-        'verbose': -1,
-        **{k: int(v) if k in ['num_leaves', 'min_data_in_leaf'] else v for k, v in params.items()}
+        "objective": "regression",
+        "metric": "None",
+        "verbose": -1,
+        **{
+            k: int(v) if k in ["num_leaves", "min_data_in_leaf"] else v
+            for k, v in params.items()
+        },
     }
 
     train_data = lgb.Dataset(X_train, label=y_train)
@@ -36,14 +39,14 @@ def train_lightgbm_model(
         train_data,
         valid_sets=[valid_data],
         feval=mase_lgb_metric,
-        num_boost_round=num_boost_round
+        num_boost_round=num_boost_round,
     )
 
     y_pred = model.predict(X_valid)
     metrics = {
-        'rmse': root_mean_squared_error(y_valid, y_pred),
-        'sMAPE': smape(y_valid.values, y_pred),
-        'MASE': mase(y_valid.values, y_pred)
+        "rmse": root_mean_squared_error(y_valid, y_pred),
+        "sMAPE": smape(y_valid.values, y_pred),
+        "MASE": mase(y_valid.values, y_pred),
     }
 
     return model, metrics, y_pred

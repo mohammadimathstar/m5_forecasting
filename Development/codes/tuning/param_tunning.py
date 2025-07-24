@@ -8,7 +8,9 @@ from codes.config import MLFLOW_TRACKING_URI, MLFLOW_EXPERIMENT_NAME, NUM_TRIALS
 
 
 @task(name="Run_hyperopt", log_prints=True)
-def run_hyperopt(X_train, y_train, X_valid, y_valid, max_evals: int = NUM_TRIALS) -> Any:
+def run_hyperopt(
+    X_train, y_train, X_valid, y_valid, max_evals: int = NUM_TRIALS
+) -> Any:
     """
     Run hyperparameter optimization with Hyperopt and log results in MLflow.
 
@@ -21,13 +23,13 @@ def run_hyperopt(X_train, y_train, X_valid, y_valid, max_evals: int = NUM_TRIALS
         dict: best parameters
     """
     search_space = {
-        'learning_rate': hp.uniform('learning_rate', 0.001, 0.2),
-        'num_leaves': hp.quniform('num_leaves', 31, 256, 1),
-        'min_data_in_leaf': hp.quniform('min_data_in_leaf', 20, 100, 1),
-        'feature_fraction': hp.uniform('feature_fraction', 0.6, 1.0),
-        'bagging_fraction': hp.uniform('bagging_fraction', 0.6, 1.0),
-        'lambda_l1': hp.uniform('lambda_l1', 0.0, 5.0),
-        'lambda_l2': hp.uniform('lambda_l2', 0.0, 5.0)
+        "learning_rate": hp.uniform("learning_rate", 0.001, 0.2),
+        "num_leaves": hp.quniform("num_leaves", 31, 256, 1),
+        "min_data_in_leaf": hp.quniform("min_data_in_leaf", 20, 100, 1),
+        "feature_fraction": hp.uniform("feature_fraction", 0.6, 1.0),
+        "bagging_fraction": hp.uniform("bagging_fraction", 0.6, 1.0),
+        "lambda_l1": hp.uniform("lambda_l1", 0.0, 5.0),
+        "lambda_l2": hp.uniform("lambda_l2", 0.0, 5.0),
     }
 
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
@@ -50,7 +52,7 @@ def run_hyperopt(X_train, y_train, X_valid, y_valid, max_evals: int = NUM_TRIALS
             space=search_space,
             algo=tpe.suggest,
             max_evals=max_evals,
-            trials=trials
+            trials=trials,
         )
 
     return best

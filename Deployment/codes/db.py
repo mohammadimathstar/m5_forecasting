@@ -16,8 +16,12 @@ CREATE TABLE {TABLE_NAME} (
 
 
 def create_database_if_missing():
-
-    t = "host=%s port=%s user=%s password=%s" % (DB_CONFIG['host'], DB_CONFIG['port'], DB_CONFIG['user'], DB_CONFIG['password'])
+    t = "host=%s port=%s user=%s password=%s" % (
+        DB_CONFIG["host"],
+        DB_CONFIG["port"],
+        DB_CONFIG["user"],
+        DB_CONFIG["password"],
+    )
     with psycopg.connect(t, autocommit=True) as conn:
         res = conn.execute(
             "SELECT 1 FROM pg_database WHERE datname='%s'" % DB_CONFIG["dbname"]

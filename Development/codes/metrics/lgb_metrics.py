@@ -10,7 +10,7 @@ def smape_lgb_metric(preds, train_data):
         tuple: (metric_name, value, is_higher_better)
     """
     y_true = train_data.get_label()
-    return 'sMAPE', smape(y_true, preds), False
+    return "sMAPE", smape(y_true, preds), False
 
 
 def mase_lgb_metric(preds, train_data):
@@ -23,8 +23,7 @@ def mase_lgb_metric(preds, train_data):
     y_true = train_data.get_label()
 
     if len(y_true) <= 1:
-        return 'MASE', np.inf, False
+        return "MASE", np.inf, False
 
     # Trim the arrays to calculate lag-1 naive forecast
-    return 'MASE', mase(y_true, preds, seasonality=1), False
-
+    return "MASE", mase(y_true, preds, seasonality=1), False
