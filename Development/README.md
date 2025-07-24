@@ -64,20 +64,15 @@ cd m5-forecasting/Development
 
 ### 2. Install dependencies
 
+Create a virtual environment and install dependencies:
+
 ```bash
 uv venv
 uv pip install -r requirements.txt
 ```
 
-### 3. Configure environment
 
-```bash
-cp .env.example .env
-# Then edit `.env` with your credentials (for using S3)
-```
-
-
-### 📁 Data
+### 3. 📁 Data
 
 - Place the original `sales_train_validation.csv`, `calendar.csv`, and `sell_prices.csv` inside: `data/raw/`
 
@@ -85,9 +80,9 @@ cp .env.example .env
 
 
 
-## 🚀 Running the Pipeline (with make)
+## 🚀 Running the Pipeline 
 
-Follow these steps to run the M5 forecasting pipeline locally:
+Follow these steps to run the M5 forecasting pipeline:
 
 #### 1. Activate the virtual environment
 
