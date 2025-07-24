@@ -22,6 +22,8 @@ wheels/
 
 # MLflow
 mlruns/
+*.db
+*.log
 
 # VS Code
 .vscode/
