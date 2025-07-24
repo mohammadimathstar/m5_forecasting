@@ -29,6 +29,7 @@ An end-to-end machine learning pipeline for training a sales forecasting model u
 
 ## 📂 Structure
 
+```
 development/
 ├── codes/
 │ ├── data_loader.py
@@ -48,7 +49,7 @@ development/
 ├── start_prefect.sh
 ├── .gitignore
 └── README.md ← this file
-
+```
 
 ---
 
