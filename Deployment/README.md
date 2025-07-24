@@ -87,7 +87,7 @@ In the `params.yaml`, you need to write the location of the model, such as
 ```bash
 mlflow:
   experiment_id: '1'
-  run_id: "m-3c280c4f771b4c3ca07d54a6d5089c40"
+  run_id: "m-3c280c4f771b4c3ca07d5242342354355645"
   model_dir: 'models'
 ```
 
