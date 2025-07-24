@@ -51,7 +51,7 @@ This folder simulates a **production batch inference** pipeline. It:
 - Uses Prefect to schedule and monitor batch jobs
 
 ## 3. Project Structure
-
+```
 .
 ├── Development/
 │ ├── codes/
@@ -77,7 +77,7 @@ This folder simulates a **production batch inference** pipeline. It:
 │ ├── Makefile
 │ └── README.md ← explains deployment + monitoring
 └── README.md ← this file
-
+```
 
 ### 5. Tech stack
 
