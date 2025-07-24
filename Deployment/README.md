@@ -50,19 +50,20 @@ Deployment/
 ├── Makefile                # Workflow automation
 ├── .gitignore
 └── README.md ← this file
-
 ```
 
 ---
 
-## 🔧 Setup Instructions
+## 🔧 Setup 
 
 ### 1. 📦 Install Python Dependencies
 
 Create a virtual environment and install dependencies:
 
+
 ```bash
-make install
+uv venv
+uv pip install -r requirements.txt
 ```
 
 Or manually:
@@ -71,21 +72,28 @@ Or manually:
 pip install -r requirements.txt
 ```
 
-### 2. 🌍 Environment Setup
+### 2. 📁 Data
 
-Copy the .env.example and populate it:
+From training model (in `Development` folder), we have the processed features in `data/processed/`. This includes two files:
+- `reference_data.csv`,
+- `test_data`
+
+Create the folder `data` and place these files there.
+
+---
+
+## 🚀 Running the Pipeline 
+
+Follow these steps to run the M5 forecasting pipel:
+
+#### 1. Activate the virtual environment
 
 ```bash
-cp .env.example .env
+source .venv/bin/activate
 ```
 
-Update the following:
 
-- `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` for S3 (MLflow)
-
-Check `params.yaml`, and modify it accordingly.
-
-### 3. 🐳 Start Services via Docker
+### 2. 🐳 Start Services via Docker
 
 This brings up:
 
@@ -96,15 +104,19 @@ This brings up:
 - Grafana (http://localhost:3000)
 
 ```bash
-docker-compose up -d
+docker-compose up --build -d
 ```
 
-### 4. 🚀 Start Deployment Pipeline
-Start Prefect + Worker + Deploy:
+#### 3. 🚀 Run the pipeline
+
+You can run the pipeline using `run_deployment.sh`. 
 
 ```bash
-bash start_prefect_deployment.sh
+chmod +x run_deployment.sh
+./run_deployment.sh
 ```
+It opens a menu. You can select `Store code on a local filesystem`.
+
 
 This script:
 
@@ -116,9 +128,16 @@ This script:
 
 - Run Inference + Monitoring
 
+#### 4. Monitoring
+
+In addition to forecasting for new days, it also computes some drift metrics (for monitoring). Its result can be seen in a dashboard, using Grafana (see below for more details).
+
+
+
+
 ## Workflow
 
-After deployment:, it follows the following workflow:
+After deployment, it follows the following workflow:
 
 - Loads new data for a day (daily)
 
@@ -146,11 +165,17 @@ http://localhost:8080
 
 Login :
 
+- system: PostgreSQL
+
+- Server: db
+
 - Username: postgres
 
 - Password: example
 
 - Database: test
+
+![Adminer](pics/adminer-db.png)
 
 ### 📈 Grafana
 
@@ -166,5 +191,20 @@ Login (default):
 
 - Password: admin
 
+![Dashboard](pics/dashboard.png)
 
+### Prefect
+
+To observe the progress
+
+![Prefect](pics/prefect-deployment.png)
+
+
+## Clean up
+
+After finishing the deployment, do not forget:
+
+```bash
+docker-compose down
+```
 
