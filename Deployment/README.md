@@ -80,6 +80,17 @@ From training model (in `Development` folder), we have the processed features in
 
 Create the folder `data` and place these files there.
 
+### 3, Configuring the model's location
+
+In the `params.yaml`, you need to write the location of the model, such as
+
+```bash
+mlflow:
+  experiment_id: '1'
+  run_id: "m-3c280c4f771b4c3ca07d54a6d5089c40"
+  model_dir: 'models'
+```
+
 ---
 
 ## 🚀 Running the Pipeline 
