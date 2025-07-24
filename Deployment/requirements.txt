@@ -1,0 +1,16 @@
+prefect
+tqdm
+requests
+pyarrow
+joblib
+psycopg
+psycopg-binary
+sqlalchemy
+pandas
+numpy
+scikit-learn
+evidently
+mlflow
+jupyter
+boto3
+lightgbm

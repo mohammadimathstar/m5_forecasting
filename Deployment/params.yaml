@@ -1,0 +1,20 @@
+
+
+mlflow:
+  experiment_id: '1'
+  run_id: "m-3c280c4f771b4c3ca07d54a6d5089c40"
+  model_dir: 'models'
+  creds_on: True
+
+
+forecasting_period:
+  start_forecasting_date: 1800
+  how_many_days: 113 # how many days 
+
+
+dashboards:
+  dash_dir: "dashboards"
+  config_file: "data_drift.json"
+
+  db_name: 'test'
+  table_name: 'dummy_metrics'
