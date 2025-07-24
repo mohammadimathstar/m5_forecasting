@@ -200,6 +200,32 @@ To observe the progress
 ![Prefect](pics/prefect-deployment.png)
 
 
+### 📦 Makefile Commands
+
+- `make install`  
+  Installs all required Python dependencies listed in `requirements.txt`.
+
+- `make test`  
+  Runs all unit tests using `pytest` to verify code correctness.
+
+- `make lint`  
+  Checks code style and quality using `ruff`, `black`, and `isort`.  
+  *Note:* This command **checks** formatting and reports issues but does **not** modify the code.
+
+- `make lint-fix`  
+  Automatically fixes linting and formatting issues with `ruff`.
+
+- `make format`  
+  Formats code using `ruff`.
+
+- `make run`
+  To run the pipeline.
+
+- `make clean`  
+  Removes Python bytecode files (`__pycache__`, `.pyc`, `.pyo`) to keep the repo clean.
+
+
+
 ## Clean up
 
 After finishing the deployment, do not forget:
