@@ -92,11 +92,19 @@ Follow these steps to run the M5 forecasting pipeline locally:
 #### 1. Install dependencies
 
 ```bash
-make install
+uv venv
+uv pip install -r requirements.txt
 source .venv/bin/activate
 ```
 
-#### 2. Start Mlflow server
+#### 2. Run the pipeline
+
+You can run the pipeline using `run_pipeline.sh` 
+
+```bash
+chmod +x run_pipeline.sh
+./run_pipeline.sh
+```
 
 You need to start the Mlflow server:
 
@@ -136,11 +144,6 @@ In Terminal 2:
 prefect worker start -p my-pool -t process
 ```
 
-Alternatively, use the provided shell script:
-
-```bash
-./start_prefect.sh
-```
 
 Note. For this you need to first in your terminal window write:
 
@@ -169,6 +172,7 @@ prefect deployment run 'm5_pipeline/my-deployment'
 You can automate steps 2–6 with a shell script:
 
 ```bash
+chmod +x start_prefect.sh
 ./run_pipeline.sh
 ```
 
