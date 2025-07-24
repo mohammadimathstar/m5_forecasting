@@ -17,10 +17,10 @@ def train_model(X_train, y_train, X_valid, y_valid, params):
     """
     Prefect task to train and log a LightGBM model using MLflow.
     """
-    if CREDINCIAL_ON:
-        env_path = Path(__file__).resolve().parent.parent / '.env'
-        load_dotenv(dotenv_path=env_path)
-        boto3.client("s3")
+    #if CREDINCIAL_ON:
+     #   env_path = Path(__file__).resolve().parent.parent / '.env'
+      #  load_dotenv(dotenv_path=env_path)
+    boto3.client("s3")
 
     mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
     mlflow.set_experiment(MLFLOW_EXPERIMENT_NAME)

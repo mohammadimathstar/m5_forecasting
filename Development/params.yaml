@@ -4,7 +4,6 @@ mlflow:
   experiment_name: 'm5'
   tracking_uri: "http://localhost:5000"
   model_dir: 'models'
-  creds_on: True
 
 
 split:
@@ -13,5 +12,5 @@ split:
   end_date_idx_validation: 1800
 
 hyperparams: 
-  number_of_trials: 20
+  number_of_trials: 1
   

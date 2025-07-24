@@ -30,7 +30,6 @@ END_DATE_VAL = config['split']['end_date_idx_validation']
 MLFLOW_EXPERIMENT_NAME = config['mlflow']['experiment_name']
 MLFLOW_TRACKING_URI = config['mlflow']['tracking_uri']
 MLFLOW_MODEL_DIR = config['mlflow']['model_dir']
-CREDINCIAL_ON = config['mlflow']['creds_on'] # for S3
 
 # Hyperparameter tuning config
 NUM_TRIALS = config['hyperparams']['number_of_trials']
