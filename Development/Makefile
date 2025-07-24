@@ -9,7 +9,7 @@ install:
 
 # Run all unit tests
 test:
-	PYTHONPATH=. uv pip install pytest && pytest tests -v
+	uv pip install pytest && PYTHONPATH=. pytest tests -v
 
 # Check code formatting and linting (does NOT modify files)
 lint:

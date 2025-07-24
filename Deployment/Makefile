@@ -4,15 +4,16 @@
 
 # Create virtual environment and install dependencies
 install:
-	pip install -r requirements.txt
+	uv venv
+	uv pip install -r requirements.txt
 
 # Run all unit tests
 test:
-	PYTHONPATH=. pytest tests -v
+	uv pip install pytest && PYTHONPATH=. pytest tests -v
 
 # Check code formatting and linting (does NOT modify files)
 lint:
-	ruff check codes tests
+	uv pip install ruff && ruff check codes tests
 
 # Auto-fix common issues (formatting, imports, etc.)
 lint-fix:
@@ -32,4 +33,4 @@ clean:
 
 # Run the pipeline
 run:
-	./start_prefect.sh
+	./run_deployment.sh

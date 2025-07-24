@@ -16,7 +16,10 @@ def test_load_sales_data():
         create_dummy_csv(tmp_path / "sales_train_validation.csv", dummy_data)
 
         df = load_sales_data(raw_data_dir=tmp_path, start_date_train=2)
-        assert df.shape[1] == 4  # id, item_id, store_id, d_2, d_3
+        assert df.shape[1] == 5  # id, item_id, store_id, d_2, d_3
+        df = load_sales_data(raw_data_dir=tmp_path, start_date_train=4)
+        assert df.shape[1] == 3  # id, item_id, store_id, d_2, d_3
+        
 
 
 def test_load_calendar_data():
