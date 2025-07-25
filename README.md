@@ -59,7 +59,13 @@ Sample data:
 
 ## 2. Proposed Solution
 
-We propose a modular and production-ready **MLOps pipeline** to forecast sales. The solution is divided into two distinct components:
+We propose a modular and production-ready **MLOps pipeline** to forecast sales. The solution is divided into three distinct components:
+
+### 📁 `terraform/`: creating required infrastructure
+
+Here, we use Terraform to construct the required infrastructure in the cloud (AWS):
+
+- Constructing the infrastructure needed to store the model's artifacts in S3 (AWS).
 
 ### 📁 `development/`: Model Development
 
@@ -83,6 +89,9 @@ This folder simulates a **production batch inference** pipeline. It:
 ## 3. Project Structure
 ```
 .
+├── Development/
+│ ├── main.tf
+│ ├── variables.tf
 ├── Development/
 │ ├── codes/
 │ ├── data/
