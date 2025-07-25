@@ -91,7 +91,7 @@ This folder simulates a **production batch inference** pipeline. It:
 │ ├── params.yaml
 │ ├── requirements.txt
 │ ├── Makefile
-│ ├── start_prefect.sh
+│ ├── run_pipeline.sh
 │ └── README.md ← explains development pipeline
 ├── Deployment/
 │ ├── codes/
@@ -100,7 +100,7 @@ This folder simulates a **production batch inference** pipeline. It:
 │ ├── data/
 │ ├── tests/
 │ ├── monitoring_pipeline.py
-│ ├── start_prefect_deployment.sh
+│ ├── run_deployment.sh
 │ ├── docker-compose.yaml
 │ ├── params.yaml
 │ ├── requirements.txt
