@@ -65,16 +65,9 @@ cd m5-forecasting/Development
 
 ### 2. Create AWS infrastructure
 
-Before running this workflow, you need to create infrastructures in AWS (see the Terraform folder)
+Before running this workflow, you need to create infrastructures in AWS (see the Terraform folder).
 
-### 2. Install dependencies
-
-Create a virtual environment and install dependencies:
-
-```bash
-uv venv
-uv pip install -r requirements.txt
-```
+**Note**. As we use S3 AWS, you should set the credentials, i.e. `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY`.
 
 
 ### 3. 📁 Data
@@ -95,15 +88,22 @@ mv /path/to/kaggle.json ~/.kaggle/kaggle.json
 chmod 600 ~/.kaggle/kaggle.json
 ```
 
+---
 
 ## 🚀 Running the Pipeline 
 
+You can run the pipeline in two ways:
+
+### Way 1. Running without Make and Docker
+
 Follow these steps to run the M5 forecasting pipeline:
 
-#### 1. Activate the virtual environment
+#### 1. Create and activate a virtual environment and then install dependencies
 
 ```bash
+uv venv
 source .venv/bin/activate
+uv pip install -r requirements.txt
 ```
 
 #### 2. Run the pipeline
@@ -114,9 +114,51 @@ You can run the pipeline using `run_pipeline.sh`
 chmod +x run_pipeline.sh
 ./run_pipeline.sh
 ```
+
 It opens a menu. You can select `Store code on a local filesystem`.
 
-----
+### Way 2. Running by make
+
+#### 1. Create and activate a virtual environment and then install dependencies
+
+```bash
+make install
+source .venv/bin/activate
+```
+
+#### 2. Run the pipeline
+
+You can run the pipeline using `run_pipeline.sh` 
+
+```bash
+chmod +x run_pipeline.sh
+make run
+```
+
+It opens a menu. You can select `Store code on a local filesystem`.
+
+### Way 3. Running By Docker
+
+The pipeline can be run in a container, using Docker. 
+
+```bash
+# Build the Docker image
+docker build -t m5-pipeline-dev .
+
+# Run an interactive container
+docker run -it \
+  -e AWS_ACCESS_KEY_ID=your_access_key \
+  -e AWS_SECRET_ACCESS_KEY=your_secret_key \
+  -v $(pwd):/app \
+  -v $HOME/.kaggle:/root/.kaggle \
+  -p 5000:5000 -p 4200:4200 \
+  --name m5-dev \
+  m5-pipeline-dev
+```
+
+It opens a menu. You can select `Store code on a local filesystem`.
+
+---
 
 ### MLflow
 
@@ -172,21 +214,4 @@ and click on `Runs` tab.
   Removes Python bytecode files (`__pycache__`, `.pyc`, `.pyo`) to keep the repo clean.
 
 
-## Running By Docker
 
-The pipeline can be run in a container, using Docker.
-
-```bash
-# Build the Docker image
-docker build -t m5-pipeline-dev .
-
-# Run an interactive container
-docker run -it \
-  -e AWS_ACCESS_KEY_ID=your_access_key \
-  -e AWS_SECRET_ACCESS_KEY=your_secret_key \
-  -v $(pwd):/app \
-  -v $HOME/.kaggle:/root/.kaggle \
-  -p 5000:5000 -p 4200:4200 \
-  --name m5-dev \
-  m5-pipeline-dev
-```
