@@ -14,5 +14,5 @@ split:
   end_date_idx_validation: 1800
 
 hyperparams: 
-  number_of_trials: 1
+  number_of_trials: 20
   
