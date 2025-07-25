@@ -2,12 +2,44 @@
 
 ## 1. Problem Description
 
-In the retail industry, accurately forecasting future sales is critical for managing inventory, reducing waste, and improving profitability. This project addresses the **M5 Forecasting** challenge, which involves predicting **daily item-level sales** across thousands of products and multiple stores over a period of time.
+In the retail industry, accurate sales forecasting is crucial for making informed decisions related to:
 
-The goal is to build a machine learning pipeline that generates reliable and scalable forecasts using historical sales, calendar events, and price data.
+- 📦 Inventory management
 
-**Problem type:** Supervised Learning / Regression  
-**Deployment type:** Batch model training and inference
+- 💸 Revenue planning
+
+- ❌ Reducing overstock and understock situations
+
+- 🕒 Aligning supply chains with demand patterns
+
+This project is built around the M5 Forecasting Challenge, which provides a real-world dataset from Walmart and challenges participants to forecast daily item-level sales.
+
+### 🧠 Objective
+
+The primary objective is to develop a machine learning pipeline that can:
+
+- Train a predictive model on historical data
+
+- Incorporate external features like calendar events and prices
+
+- Produce reliable and scalable forecasts
+
+- Handle data from thousands of products sold across multiple stores in different U.S. states
+
+#### 📊 Problem Type
+
+- **Type**: Supervised Machine Learning
+
+- **Task**: Regression (continuous target = daily sales quantity)
+
+- **Deployment type:** Batch model training and inference
+
+- **Evaluation Metrics**: 
+
+    * sMAPE (Symmetric Mean Absolute Percentage Error)
+
+    * MASE (Mean Absolute Scaled Error)
+
 
 ### Dataset
 
