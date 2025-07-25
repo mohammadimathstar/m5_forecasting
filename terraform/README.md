@@ -7,7 +7,6 @@ This directory contains Terraform configuration used to provision cloud infrastr
 The primary goal of this Terraform module is to:
 
 - Provision an **Amazon S3 bucket** to store ML model artifacts (e.g., models logged via MLflow).
-- Configure the bucket with appropriate policies for versioning and access.
 
 This infrastructure enables persistent and centralized storage of trained models for future use, deployment, and auditing.
 
@@ -16,8 +15,6 @@ This infrastructure enables persistent and centralized storage of trained models
 | Resource Type | Description                     |
 |---------------|---------------------------------|
 | `aws_s3_bucket` | Bucket to store MLflow artifacts |
-| `aws_s3_bucket_versioning` | Enables versioning for artifact tracking |
-| `aws_s3_bucket_policy` | Optional: Configure read/write permissions |
 
 ## 🧩 Prerequisites
 
