@@ -8,8 +8,6 @@ An end-to-end machine learning pipeline for training a sales forecasting model u
 
 ## 🔄 Workflow
 
-**Note**. Before running this workflow, you need to create infrastructures in AWS (see the Terraform folder)
-
 1. Load and preprocess data
 2. Perform feature engineering
 3. Split data into train/validation/test sets (save validation/test sets in an S3 bucket)
@@ -64,6 +62,10 @@ development/
 git clone https://github.com/mohammadimathstar/m5-forecasting.git
 cd m5-forecasting/Development
 ```
+
+### 2. Create AWS infrastructure
+
+Before running this workflow, you need to create infrastructures in AWS (see the Terraform folder)
 
 ### 2. Install dependencies
 
