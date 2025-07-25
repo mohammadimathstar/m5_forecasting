@@ -35,8 +35,4 @@ RUN chmod +x run_pipeline.sh
 # Optional: run the pipeline on container start
 CMD ["./run_pipeline.sh"]
 
-# Entry command (optional override)
-#CMD ["bash"]
-
-
 

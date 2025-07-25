@@ -74,10 +74,21 @@ uv pip install -r requirements.txt
 
 ### 3. 📁 Data
 
-- Place the original `sales_train_validation.csv`, `calendar.csv`, and `sell_prices.csv` inside: `data/raw/`
+As we use the data from Kaggle, you need to setup your Kaggle credentials:
 
-- Processed features and `test/reference` sets will be saved in: `data/processed/`
+- Go to https://www.kaggle.com/account
 
+- Go to Setting > API, click "Create New API Token"
+
+- This will download a file named `kaggle.json`
+
+- Move it to your home directory under .kaggle/:
+
+```bash
+mkdir -p ~/.kaggle
+mv /path/to/kaggle.json ~/.kaggle/kaggle.json
+chmod 600 ~/.kaggle/kaggle.json
+```
 
 
 ## 🚀 Running the Pipeline 
@@ -157,6 +168,8 @@ and click on `Runs` tab.
 
 
 ## Running By Docker
+
+The pipeline can be run in a container, using Docker.
 
 ```bash
 # Build the Docker image
