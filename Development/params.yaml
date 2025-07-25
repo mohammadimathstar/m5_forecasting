@@ -1,4 +1,6 @@
 
+output_data:
+  s3_bucket: 'data-bucket-m5'
 
 mlflow:
   experiment_name: 'm5'

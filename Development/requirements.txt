@@ -8,8 +8,9 @@ prefect>=3.4.8
 python-dotenv>=1.1.1
 scikit-learn>=1.7.0
 setuptools>=80.9.0
-numpy
-pyyaml
-pytest
-pytest-mock
+kaggle===1.7.4.5
+numpy==2.3.1
+pyyaml==6.0.2
+pytest==8.4.1
+pytest-mock==3.14.1
 ruff

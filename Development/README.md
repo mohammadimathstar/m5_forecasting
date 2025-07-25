@@ -156,3 +156,19 @@ and click on `Runs` tab.
   Removes Python bytecode files (`__pycache__`, `.pyc`, `.pyo`) to keep the repo clean.
 
 
+## Running By Docker
+
+```bash
+# Build the Docker image
+docker build -t m5-pipeline-dev .
+
+# Run an interactive container
+docker run -it \
+  -e AWS_ACCESS_KEY_ID=your_access_key \
+  -e AWS_SECRET_ACCESS_KEY=your_secret_key \
+  -v $(pwd):/app \
+  -v $HOME/.kaggle:/root/.kaggle \
+  -p 5000:5000 -p 4200:4200 \
+  --name m5-dev \
+  m5-pipeline-dev
+```

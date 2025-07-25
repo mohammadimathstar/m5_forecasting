@@ -15,7 +15,7 @@ prefect init
 prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api
 
 # Start server in background
-prefect server start &
+prefect server start --host 0.0.0.0 --port 4200 &
 
 sleep 10
 
@@ -29,3 +29,7 @@ echo "n" | prefect deploy pipeline_training.py:m5_pipeline -n mydeployment -p my
 
 # Then run the pipeline deployment manually
 prefect deployment run 'm5_pipeline/mydeployment'
+
+
+# Keep container alive to keep services running
+tail -f /dev/null

@@ -14,6 +14,12 @@ terraform {
 #  secret_key = var.aws_secret_access_key
 #}
 
+# S3 Bucket for processed data
+resource "aws_s3_bucket" "m5_data" {
+  bucket = "data-bucket-m5"
+  force_destroy = true
+}
+
 # S3 Bucket for artifacts
 resource "aws_s3_bucket" "mlflow_artifacts" {
   bucket = "mlflow-artifacts-bucket-m5"

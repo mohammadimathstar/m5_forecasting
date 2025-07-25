@@ -4,7 +4,9 @@ from typing import Tuple
 import pandas as pd
 import logging
 
-from codes.data_loader import (
+from codes.data_handling.data_downloader import download_m5_data
+from codes.data_handling.data_uploader import save_and_upload_to_s3
+from codes.data_handling.data_loader import (
     load_sales_data,
     load_calendar_data,
     load_sell_prices
@@ -18,6 +20,7 @@ from codes.feature_engineering import (
 from codes.best_model import train_model
 from codes.tuning.param_tunning import run_hyperopt
 from codes.config import (
+    RAW_DATA_DIR,
     PROCESSED_DATA_DIR,
     START_DATE_TRAIN,
     END_DATE_TRAIN,
@@ -29,6 +32,13 @@ from codes.config import (
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+@task(name="Download_data", log_prints=True)
+def downloading_data() -> None:
+    """Download M5 data set from the Kaggle"""
+    logger.info("Downloading M5 data")
+    download_m5_data(RAW_DATA_DIR)
 
 
 @task(name="Prepare_data", log_prints=True)
@@ -78,11 +88,9 @@ def split_data(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.Series, pd.DataFrame,
     X_valid = df[valid_mask][features]
     y_valid = df[valid_mask][target]
 
-    df_reference = df[valid_mask][features + ['d', target]]
-    df_test = df[test_mask][features + ['d', target]]
-    df_reference.to_csv(PROCESSED_DATA_DIR / 'reference_data.csv', index=False)
-    df_test.to_csv(PROCESSED_DATA_DIR / 'test_data.csv', index=False)
-
+    save_and_upload_to_s3(df_reference=df[valid_mask][features + ['d', target]], 
+                          df_test=df[test_mask][features + ['d', target]])
+    
     logger.info(f"Train/Validation/Test splits created with shapes: "
                 f"{X_train.shape}, {X_valid.shape}")
 
@@ -100,7 +108,10 @@ def m5_pipeline():
     """
     logger.info("Starting M5 Forecasting Pipeline")
 
+    downloading_data()
+
     df = prepare_data()
+
     X_train, y_train, X_valid, y_valid = split_data(df)
 
     logger.info("Running Hyperparameter Search")
