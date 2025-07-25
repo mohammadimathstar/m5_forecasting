@@ -2,7 +2,11 @@ import pytest
 from tempfile import TemporaryDirectory
 from pathlib import Path
 
-from codes.data_loader import load_sales_data, load_calendar_data, load_sell_prices
+from codes.data_handling.data_loader import (
+    load_sales_data,
+    load_calendar_data,
+    load_sell_prices,
+)
 
 
 def create_dummy_csv(path: Path, data: str):
