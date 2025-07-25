@@ -1,6 +1,6 @@
 # 🛠 Development: Model Training Pipeline
 
-An end-to-end machine learning pipeline for training a sales forecasting model using the M5 dataset. Built with modular components using **LightGBM**, **Hyperopt**, **Prefect**, and **MLflow**, the pipeline supports data ingestion, feature engineering, hyperparameter optimization, and model training with custom evaluation metrics.
+An end-to-end machine learning pipeline for training a sales forecasting model using the M5 dataset. Built with modular components using **LightGBM**, **Hyperopt**, **Prefect**, and **MLflow**, the pipeline supports data ingestion, feature engineering, hyperparameter optimisation, and model training with custom evaluation metrics.
 
 
 ---
@@ -8,10 +8,13 @@ An end-to-end machine learning pipeline for training a sales forecasting model u
 
 ## 🔄 Workflow
 
+**Note**. Before running this workflow, you need to create infrastructures in AWS (see the Terraform folder)
+
 1. Load and preprocess data
 2. Perform feature engineering
-3. Run hyperparameter tuning with Hyperopt
-4. Train a LightGBM model
+3. Split data into train/validation/test sets (save validation/test sets in an S3 bucket)
+4. Run hyperparameter tuning with Hyperopt
+5. Train a LightGBM model
 
 ---
 
@@ -32,10 +35,10 @@ An end-to-end machine learning pipeline for training a sales forecasting model u
 ```
 development/
 ├── codes/
-│ ├── data_loader.py
 │ ├── feature_engineering.py
 │ ├── best_model.py
 │ ├── config.py
+│ ├── data_handling/
 │ ├── tuning/
 │ ├── metrics/
 │ └── models/
@@ -43,10 +46,10 @@ development/
 ├── data/
 ├── pipeline_training.py
 ├── params.yaml             # Pipeline configuration
-├── .env.example # Environment variables template
 ├── requirements.txt
 ├── Makefile                # Workflow automation
-├── start_prefect.sh
+├── run_pipeline.sh
+├── Dockerfile
 ├── .gitignore
 └── README.md ← this file
 ```
