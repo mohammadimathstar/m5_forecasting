@@ -72,15 +72,18 @@ Or manually:
 pip install -r requirements.txt
 ```
 
-### 2. 📁 Data
+### 2. 📁 Configuring the data's location
 
-From training model (in `Development` folder), we have the processed features in `data/processed/`. This includes two files:
-- `reference_data.csv`,
-- `test_data`
+In the `params.yaml`, you need to write the location of the data (in `S3`), such as
 
-Create the folder `data` and place these files there.
+```bash
+data:
+  s3_bucket: 'data-bucket-m5'
+  s3_reference_path: 'data/processed/reference_data.csv'
+  s3_test_path: 'data/processed/test_data.csv'
+```
 
-### 3, Configuring the model's location
+### 3. Configuring the model's location
 
 In the `params.yaml`, you need to write the location of the model, such as
 
@@ -95,7 +98,11 @@ mlflow:
 
 ## 🚀 Running the Pipeline 
 
-Follow these steps to run the M5 forecasting pipel:
+Here, we have two ways to perform inference and monitoring.
+
+### Way 1. Use Docker only for DB and Monitoring
+
+Follow these steps to run the M5 forecasting pipeline:
 
 #### 1. Activate the virtual environment
 
@@ -144,7 +151,19 @@ This script:
 In addition to forecasting for new days, it also computes some drift metrics (for monitoring). Its result can be seen in a dashboard, using Grafana (see below for more details).
 
 
+### Way 2. Use Docker (for all)
 
+You only need to write the folloiwng in the Terminal window:
+
+```bash
+docker-compose up --build
+```
+
+**Note**: after fininshing your work, you can stop the containers:
+
+```bash
+docker-compose down
+```
 
 ## Workflow
 
