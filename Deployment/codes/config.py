@@ -41,7 +41,7 @@ if not os.path.exists(DASH_CONFIG_FILE):
 
 # DB
 DB_CONFIG = {
-    "host": "localhost",
+    "host": "db", # db is the name of the PostgreSQL service in your Docker Compose file, 
     "port": int(docker_config["services"]["db"]["ports"][0].split(":")[0]),
     "user": docker_config["services"]["db"]["environment"]["POSTGRES_USERNAME"],
     "password": docker_config["services"]["db"]["environment"]["POSTGRES_PASSWORD"],

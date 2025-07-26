@@ -41,3 +41,21 @@ services:
       - back-tier
       - front-tier
     restart: always
+    
+    
+  deployment:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: monitoring-deployment
+    environment:
+      PREFECT_API_URL: http://127.0.0.1:4200/api
+    volumes:
+      - .:/app
+      - ~/.aws:/root/.aws:ro   # ← Mount AWS credentials into container
+    networks:
+      - front-tier
+      - back-tier
+    ports:
+      - "4200:4200"  # Prefect UI if launched from here
+
