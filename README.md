@@ -65,7 +65,7 @@ We propose a modular and production-ready **MLOps pipeline** to forecast sales. 
 
 Here, we use Terraform to construct the required infrastructure in the cloud (AWS):
 
-- Constructing the infrastructure needed to store the model's artifacts in S3 (AWS).
+- Constructing the infrastructure needed to store the data and the model's artefacts in S3 (AWS).
 
 ### 📁 `development/`: Model Development
 
@@ -73,7 +73,7 @@ This folder contains all the code related to training the machine learning model
 
 - Data preprocessing and feature engineering
 - Model selection and training (LightGBM)
-- Hyperparameter optimization (Hyperopt)
+- Hyperparameter optimisation (Hyperopt)
 - Experiment tracking (MLflow)
 - Prefect orchestration
 
@@ -89,7 +89,7 @@ This folder simulates a **production batch inference** pipeline. It:
 ## 3. Project Structure
 ```
 .
-├── Development/
+├── terraform /
 │ ├── main.tf
 │ ├── variables.tf
 ├── Development/
