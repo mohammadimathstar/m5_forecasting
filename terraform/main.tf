@@ -33,8 +33,8 @@ resource "aws_s3_bucket" "m5_dev_codes" {
 }
 
 # S3 Bucket for codes
-resource "aws_s3_bucket" "m5_prod_codes" {
-  bucket        = "production-codes-bucket-m5"
-  force_destroy = true
-}
+# resource "aws_s3_bucket" "m5_prod_codes" {
+#  bucket        = "production-codes-bucket-m5"
+#  force_destroy = true
+#}
 
