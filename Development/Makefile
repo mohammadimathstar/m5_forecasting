@@ -1,6 +1,6 @@
 # Makefile for M5 Forecasting Project
 
-.PHONY: install test lint format clean run
+.PHONY: install test lint format clean run clean-mlflow
 
 # Create virtual environment and install dependencies
 install:
@@ -23,12 +23,17 @@ lint-fix:
 format:
 	ruff format codes tests
 
-# Clean pycache and temp files
+# Clean pycache and temp files and prefect
 clean:
 	find . -type d -name "__pycache__" -exec rm -r {} +
 	find . -type f -name "*.pyc" -delete
-
-
+	
+	
+# Clean data folder and meta-data (in db)
+clean-mlflow:
+	sudo rm -r data
+	sudo rm -r mlflow.db
+	
 
 
 # Run the pipeline

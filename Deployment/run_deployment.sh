@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -f prefect.yaml ]; then
+    rm prefect.yaml
+fi
+
 # prefect init
 
 prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api

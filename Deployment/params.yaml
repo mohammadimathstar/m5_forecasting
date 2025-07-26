@@ -1,4 +1,8 @@
 
+data:
+  s3_bucket: 'data-bucket-m5'
+  s3_reference_path: 'data/processed/reference_data.csv'
+  s3_test_path: 'data/processed/test_data.csv'
 
 mlflow:
   experiment_id: '1'

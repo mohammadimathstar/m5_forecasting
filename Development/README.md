@@ -115,7 +115,9 @@ chmod +x run_pipeline.sh
 ./run_pipeline.sh
 ```
 
-It opens a menu. You can select `Store code on a local filesystem`.
+It opens a menu. You can select `Store code on a local filesystem` for simplicity.
+
+- If you use `S3`, make sure that you enter a valid bucket name (check `terraform/main.tf`)
 
 ### Way 2. Running by make
 

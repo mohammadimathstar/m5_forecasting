@@ -17,7 +17,10 @@ with open(BASE_DIR / "docker-compose.yaml") as conf_docker:
 
 
 # Data directory
-DATA_DIR = BASE_DIR / "data"
+DATA_DIR = BASE_DIR / "/".join(config['data']['s3_reference_path'].split("/")[:-1])
+BUCKET_NAME = config['data']['s3_bucket']
+S3_KEY_REF = config['data']['s3_reference_path']
+S3_KEY_TEST = config['data']['s3_test_path']
 
 # Time interval
 START_DATE_FORCASTING = config["forecasting_period"]["start_forecasting_date"]

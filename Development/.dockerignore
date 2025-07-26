@@ -1,0 +1,10 @@
+prefect.yaml
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+*.db
+data/
+mlruns/
+pics/
+README.md

@@ -37,7 +37,7 @@ def save_and_upload_to_s3(
     s3 = boto3.client("s3")
     s3.upload_file(
         str(reference_path), s3_bucket, "/".join(str(reference_path).split("/")[-3:])
-    )
+    )    
     s3.upload_file(str(test_path), s3_bucket, "/".join(str(test_path).split("/")[-3:]))
 
     print(f"Uploaded {local_dir} to s3://{s3_bucket} bucket.")
